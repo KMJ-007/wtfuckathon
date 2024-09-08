@@ -80,13 +80,15 @@ export default function Home() {
       </main>
 
       <footer className="mt-12 text-center text-white animate-pulse">
-        <p>Inspired by the fever dreams at <a href="https://lu.ma/tj6odp5b" className="underline text-yellow-300 hover:text-red-500">WTFathon</a></p>
+        <p>documentation of the fever dreams at <a href="https://lu.ma/tj6odp5b" className="underline text-yellow-300 hover:text-red-500">WTFathon</a></p>
         <p className="mt-2 text-sm">Disclaimer: This site may cause uncontrollable laughter, temporary insanity, or a sudden urge to create useless inventions. Proceed at your own risk.</p>
         <p className="mt-2 text-xs animate-bounce">Side effects may include spontaneous dance parties and an irrational fear of normal websites.</p>
       </footer>
 
       <div className="fixed bottom-4 right-4 animate-bounce">
-        <Image src="/images/wtf-emoji.png" alt="WTF Emoji" width={50} height={50} className="rounded-full hover:rotate-180 transition-transform" />
+        <div className="text-6xl animate-spin hover:animate-bounce">
+          🤪
+        </div>
       </div>
 
       <style jsx global>{`
