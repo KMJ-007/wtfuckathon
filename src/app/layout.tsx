@@ -56,6 +56,13 @@ export default function RootLayout({
             🤪
           </div>
         </div>
+        <footer className="mt-8 sm:mt-12 text-center text-white animate-pulse">
+        <p className="text-sm sm:text-base">Documentation of the fever dreams at <a href="https://lu.ma/tj6odp5b" className="underline text-yellow-300 hover:text-red-500">WTFathon</a></p>
+        <p className="mt-2 text-xs sm:text-sm">Disclaimer: This site may cause uncontrollable laughter, temporary insanity, or a sudden urge to create useless inventions. Proceed at your own risk.</p>
+        <p className="mt-2 text-xs animate-bounce">Side effects may include spontaneous dance parties and an irrational fear of normal websites.</p>
+        <p className="mt-2 text-xs italic">Absolutely, positively this site is NOT created by AI.</p>
+      </footer>
+
       </body>
     </html>
   );

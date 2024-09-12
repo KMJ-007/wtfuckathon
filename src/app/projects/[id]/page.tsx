@@ -18,21 +18,21 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     videoRefs.current[activeIndex]?.play();
-  }, [activeIndex]);
+  }, [activeIndex, videoRefs]);
 
   if (!project) {
     return <div>Project not found</div>;
   }
 
   return (
-    <div className="min-h-screen p-4 md:p-8 bg-gradient-to-br from-puke-green via-neon-pink to-radioactive-yellow">
+    <div className="min-h-screen p-4 sm:p-8 bg-gradient-to-br from-puke-green via-neon-pink to-radioactive-yellow">
       <Link href="/projects" className="text-white mb-4 inline-block hover:underline">&larr; Back to Abominations</Link>
-      <div className="bg-white/80 p-4 md:p-8 rounded-lg shadow-lg backdrop-blur-md max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-purple-600">{project.name}</h1>
-        <p className="text-purple-600 mb-6 text-xl font-bold italic">{project.description}</p>
+      <div className="bg-white/80 p-4 sm:p-8 rounded-lg shadow-lg backdrop-blur-md max-w-xl sm:max-w-4xl mx-auto">
+        <h1 className="text-3xl sm:text-5xl font-bold mb-4 text-purple-600">{project.name}</h1>
+        <p className="text-lg sm:text-xl font-bold italic text-purple-600 mb-6">{project.description}</p>
         
         {project.videos && project.videos.length > 0 && (
-          <div className="mb-8 relative overflow-hidden rounded-lg shadow-2xl aspect-w-16 aspect-h-9">
+          <div className="mb-6 sm:mb-8 relative overflow-hidden rounded-lg shadow-2xl aspect-w-16 aspect-h-9">
             <Swiper
               modules={[Navigation, Pagination, Autoplay]}
               navigation
@@ -65,11 +65,11 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
           </div>
         )}
 
-        <h2 className="text-2xl font-bold mb-4 text-purple-600">Masterminds Behind This Madness</h2>
-        <div className="flex flex-wrap gap-4 md:gap-6 mb-6 justify-center">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-purple-600">Masterminds Behind This Madness</h2>
+        <div className="flex flex-wrap gap-4 sm:gap-6 mb-6 justify-center">
           {project.people.map((person) => (
             <div key={person} className="flex flex-col items-center group">
-              <div className="relative overflow-hidden rounded-full w-16 h-16 md:w-24 md:h-24 mb-2">
+              <div className="relative overflow-hidden rounded-full w-16 h-16 sm:w-24 sm:h-24 mb-2">
                 <Image
                   src={people[person as keyof typeof people]}
                   alt={`Team member ${person}`}

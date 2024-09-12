@@ -58,13 +58,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen p-8 pb-20 font-[family-name:var(--font-comic-sans)] bg-gradient-to-br from-puke-green via-neon-pink to-radioactive-yellow overflow-hidden">
-      <header className="text-center mb-12 relative">
-        <h1 className="text-6xl font-bold mb-4 text-white drop-shadow-lg animate-bounce">WTFathon</h1>
-        <p className="text-xl text-white animate-spin">The hackathon that made you question reality</p>
+    <div className="min-h-screen p-4 sm:p-8 pb-20 font-[family-name:var(--font-comic-sans)] bg-gradient-to-br from-puke-green via-neon-pink to-radioactive-yellow overflow-hidden">
+      <header className="text-center mb-8 sm:mb-12 relative">
+        <h1 className="text-4xl sm:text-6xl font-bold mb-2 sm:mb-4 text-white drop-shadow-lg animate-bounce">WTFathon</h1>
+        <p className=" sm:text-xl text-white animate-spin">The hackathon that made you question reality</p>
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-          {[...Array(10)].map((_, i) => (
-            <div key={`float-emoji-${i}`} className="absolute text-6xl animate-float" style={{
+          {[...Array(6)].map((_, i) => (
+            <div key={`float-emoji-${i}`} className="absolute text-4xl sm:text-6xl animate-float" style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDuration: `${5 + Math.random() * 10}s`,
@@ -75,32 +75,29 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto relative">
-        <section className="bg-white/80 rounded-lg p-6 mb-12 transform skew-y-3 hover:skew-y-0 transition-transform">
-          <h2 className="text-3xl font-bold mb-4 text-purple-600">What in the name of Cthulhu happened here?</h2>
-          <p className="text-green-500">On a day when the planets aligned and common sense took a vacation, a bunch of sleep-deprived nerds in Ahmedabad decided to create digital abominations. Behold the results of their caffeine-fueled madness!</p>
+      <main className="max-w-xl sm:max-w-4xl mx-auto relative">
+        <section className="bg-white/80 rounded-lg p-4 sm:p-6 mb-8 sm:mb-12 transform skew-y-3 hover:skew-y-0 transition-transform">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 text-purple-600">What in the name of Cthulhu happened here?</h2>
+          <p className="text-sm sm:text-base text-green-500">On a day when the planets aligned and common sense took a vacation, a bunch of sleep-deprived nerds in Ahmedabad decided to create digital abominations. Behold the results of their caffeine-fueled madness!</p>
         </section>
 
         {/* Past Event Showcase Section */}
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-center text-white">Past Madness</h2>
-          <div className="bg-white/80 rounded-lg p-4 transform hover:scale-105 transition-transform shadow-lg">
+        <section className="mb-8 sm:mb-12 flex flex-col items-center">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-center text-white">Past Madness</h2>
+          <div className="bg-white/80 rounded-lg p-4 transform hover:scale-105 transition-transform shadow-lg w-64">
             <Link href="/projects">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <Image
-                    src={'/poster.jpeg'}
-                    alt="WTFathon Poster"
-                    width={50}
-                    height={75}
-                    className="rounded-lg shadow-md mr-4"
-                  />
-                  <div>
-                    <h3 className="text-xl font-bold text-purple-600">WTFathon 2023</h3>
-                    <p className="text-green-500 text-sm">🗓️ 01/09/2023</p>
-                  </div>
+              <div className="flex flex-col items-center">
+                <Image
+                  src={'/poster.jpeg'}
+                  alt="WTFathon Poster"
+                  width={200}
+                  height={300}
+                  className="rounded-lg shadow-md mb-4"
+                />
+                <div className="text-center">
+                  <h3 className="text-lg sm:text-xl font-bold text-purple-600">WTFathon 2024</h3>
+                  <p className="text-xs sm:text-sm text-green-500">🗓 01/09</p>
                 </div>
-
               </div>
             </Link>
           </div>
@@ -109,7 +106,7 @@ export default function Home() {
         <div className="mt-8 text-center">
           <button
             type="button"
-            className="bg-yellow-400 text-black px-6 py-3 rounded-full text-xl font-bold hover:bg-yellow-300 transform hover:scale-110 transition-transform animate-pulse relative overflow-hidden"
+            className="bg-yellow-400 text-black px-4 sm:px-6 py-2 sm:py-3 rounded-full text-lg sm:text-xl font-bold hover:bg-yellow-300 transform hover:scale-110 transition-transform animate-pulse relative overflow-hidden"
             onClick={() => {
               setIsBananaCursor(true);
               alert("You were warned! Now your cursor is a banana for the next minute. Enjoy!");
@@ -122,9 +119,9 @@ export default function Home() {
           </button>
         </div>
 
-        <div className="mt-12 bg-white/80 p-6 rounded-lg transform -rotate-1 hover:rotate-1 transition-transform">
-          <h3 className="text-2xl font-bold mb-4 text-red-500">Random WTF Generator</h3>
-          <p className="text-blue-600 mb-4">Need inspiration for your next absurd project? We've got you covered!</p>
+        <div className="mt-8 sm:mt-12 bg-white/80 p-4 sm:p-6 rounded-lg transform -rotate-1 hover:rotate-1 transition-transform">
+          <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 text-red-500">Random WTF Generator</h3>
+          <p className="text-sm sm:text-base text-blue-600 mb-4">Need inspiration for your next absurd project? We've got you covered!</p>
           <div
             className={`bg-gray-200 p-4 rounded-lg text-center relative cursor-pointer hover:bg-gray-300 transition-colors ${isGenerating ? 'animate-pulse' : ''}`}
             onClick={handleGenerateIdea}
@@ -138,21 +135,15 @@ export default function Home() {
             aria-label="Generate new random idea"
           >
             {isGenerating ? (
-              <p className="text-xl font-bold text-purple-700">Generating madness...</p>
+              <p className="text-lg sm:text-xl font-bold text-purple-700">Generating madness...</p>
             ) : (
-              <p className="text-xl font-bold text-purple-700">{randomIdea}</p>
+              <p className="text-lg sm:text-xl font-bold text-purple-700">{randomIdea}</p>
             )}
             <div className={`absolute top-2 right-2 ${isGenerating ? 'animate-spin' : ''}`}>🌀</div>
           </div>
-          <p className="text-sm text-center mt-2 text-gray-600">Click to generate a new idea!</p>
+          <p className="text-xs sm:text-sm text-center mt-2 text-gray-600">Click to generate a new idea!</p>
         </div>
       </main>
-
-      <footer className="mt-12 text-center text-white animate-pulse">
-        <p>Documentation of the fever dreams at <a href="https://lu.ma/tj6odp5b" className="underline text-yellow-300 hover:text-red-500">WTFathon</a></p>
-        <p className="mt-2 text-sm">Disclaimer: This site may cause uncontrollable laughter, temporary insanity, or a sudden urge to create useless inventions. Proceed at your own risk.</p>
-        <p className="mt-2 text-xs animate-bounce">Side effects may include spontaneous dance parties and an irrational fear of normal websites.</p>
-      </footer>
 
       <style jsx global>{`
         @keyframes float {
