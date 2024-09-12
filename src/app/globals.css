@@ -2,46 +2,125 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply transition-all duration-500;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@keyframes dimension-shift {
+  0% {
+    filter: hue-rotate(0deg) blur(0px) brightness(1);
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    filter: hue-rotate(90deg) blur(5px) brightness(1.2);
+    transform: scale(1.05) rotate(5deg);
+  }
+  50% {
+    filter: hue-rotate(180deg) blur(10px) brightness(0.8);
+    transform: scale(0.95) rotate(-5deg);
+  }
+  75% {
+    filter: hue-rotate(270deg) blur(5px) brightness(1.2);
+    transform: scale(1.05) rotate(5deg);
+  }
+  100% {
+    filter: hue-rotate(360deg) blur(0px) brightness(1);
+    transform: scale(1) rotate(0deg);
   }
 }
 
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.dimension-shift {
+  animation: dimension-shift 5s ease-in-out;
 }
 
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient 15s ease infinite;
+/* New utility classes */
+.rotate-1 {
+  transform: rotate(1deg);
 }
 
+.rotate-2 {
+  transform: rotate(2deg);
+}
+
+.-rotate-3 {
+  transform: rotate(-3deg);
+}
+
+.skew-x-3 {
+  transform: skew(-3deg, 0);
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-fast {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(720deg);
+  }
+}
+
+@keyframes spin-faster {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1080deg);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+.animate-spin-fast {
+  animation: spin-fast 5s linear infinite;
+}
+
+.animate-spin-faster {
+  animation: spin-faster 3s linear infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 1s ease-in-out infinite;
+}
+
+/* Ensure dynamic styles are not overridden */
+body[class*="bg-"] {
+  background-color: initial !important;
+}
+
+body[style*="animation"] {
+  animation: var(--animation-value) !important;
+}
+
+/* Add a comic sans-like font */
+@font-face {
+  font-family: 'Comic Sans MS';
+  src: local('Comic Sans MS');
+}
+
+.font-comic-sans {
+  font-family: 'Comic Sans MS', cursive;
+}
+
+/* Add this to the existing animations */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+  50% { transform: translateY(-20px); }
 }

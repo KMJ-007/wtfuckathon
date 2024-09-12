@@ -75,7 +75,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="max-w-xl sm:max-w-4xl mx-auto relative">
+      <main className="flex min-h-screen flex-col items-center justify-between p-24 transition-all duration-500">
         <section className="bg-white/80 rounded-lg p-4 sm:p-6 mb-8 sm:mb-12 transform skew-y-3 hover:skew-y-0 transition-transform">
           <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 text-purple-600">What in the name of Cthulhu happened here?</h2>
           <p className="text-sm sm:text-base text-green-500">On a day when the planets aligned and common sense took a vacation, a bunch of sleep-deprived nerds in Ahmedabad decided to create digital abominations. Behold the results of their caffeine-fueled madness!</p>
