@@ -1,10 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-
-const projects = [
-  // Still a placeholder, but now with more potential for chaos
-];
+import Link from 'next/link';
+import { poster } from "./constant"; // Import the poster from constants
 
 export default function Home() {
   const [isBananaCursor, setIsBananaCursor] = useState(false);
@@ -14,10 +12,9 @@ export default function Home() {
       document.body.style.cursor = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍌</text></svg>") 16 0, auto`;
       const timer = setTimeout(() => {
         setIsBananaCursor(false);
+        document.body.style.cursor = 'default';
       }, 60000); // 60 seconds
       return () => clearTimeout(timer);
-    } else {
-      document.body.style.cursor = 'default';
     }
   }, [isBananaCursor]);
 
@@ -27,8 +24,8 @@ export default function Home() {
         <h1 className="text-6xl font-bold mb-4 text-white drop-shadow-lg animate-bounce">WTFathon</h1>
         <p className="text-xl text-white animate-spin">The hackathon that made you question reality</p>
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-          {[...Array(20)].map((_, i) => (
-            <div key={i} className="absolute text-6xl animate-float" style={{
+          {[...Array(10)].map((_, i) => (
+            <div key={`float-emoji-${i}`} className="absolute text-6xl animate-float" style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDuration: `${5 + Math.random() * 10}s`,
@@ -45,8 +42,29 @@ export default function Home() {
           <p className="text-green-500">On a day when the planets aligned and common sense took a vacation, a bunch of sleep-deprived nerds in Ahmedabad decided to create digital abominations. Behold the results of their caffeine-fueled madness!</p>
         </section>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Still a placeholder, but now with more potential for chaos */}
+        {/* Past Event Showcase Section */}
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-4 text-center text-white">Past Madness</h2>
+          <div className="bg-white/80 rounded-lg p-4 transform hover:scale-105 transition-transform shadow-lg">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                <Image
+                  src={'/poster.jpeg'}
+                  alt="WTFathon Poster"
+                  width={50}
+                  height={75}
+                  className="rounded-lg shadow-md mr-4"
+                />
+                <div>
+                  <h3 className="text-xl font-bold text-purple-600">WTFathon 2023</h3>
+                  <p className="text-green-500 text-sm">🗓️ 01/09/2023</p>
+                </div>
+              </div>
+              <Link href="/projects" className="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold hover:bg-yellow-300 transform hover:scale-110 transition-transform inline-block">
+                View Projects
+              </Link>
+            </div>
+          </div>
         </section>
 
         <div className="mt-8 text-center">
@@ -80,7 +98,7 @@ export default function Home() {
       </main>
 
       <footer className="mt-12 text-center text-white animate-pulse">
-        <p>documentation of the fever dreams at <a href="https://lu.ma/tj6odp5b" className="underline text-yellow-300 hover:text-red-500">WTFathon</a></p>
+        <p>Documentation of the fever dreams at <a href="https://lu.ma/tj6odp5b" className="underline text-yellow-300 hover:text-red-500">WTFathon</a></p>
         <p className="mt-2 text-sm">Disclaimer: This site may cause uncontrollable laughter, temporary insanity, or a sudden urge to create useless inventions. Proceed at your own risk.</p>
         <p className="mt-2 text-xs animate-bounce">Side effects may include spontaneous dance parties and an irrational fear of normal websites.</p>
       </footer>
