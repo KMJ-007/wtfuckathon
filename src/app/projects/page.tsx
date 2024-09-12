@@ -36,9 +36,14 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-cover bg-center bg-fixed" >
       <div className="min-h-screen bg-black bg-opacity-70 p-4 sm:p-8">
-        <h1 className="text-4xl sm:text-6xl font-bold mb-6 sm:mb-8 text-center text-white animate-float">
-          Behold, the Abominations!
-        </h1>
+        <header className="mb-6 sm:mb-8 flex justify-between items-center">
+          <h1 className="text-4xl sm:text-6xl font-bold text-white animate-float">
+            Behold, the Abominations!
+          </h1>
+          <Link href="/" className="text-white hover:text-yellow-300 transition-colors">
+            Back to Home
+          </Link>
+        </header>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
           {projects.map((project, index) => (

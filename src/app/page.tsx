@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from 'next/link';
-import { poster } from "./constant";
 
 export default function Home() {
   const [isBananaCursor, setIsBananaCursor] = useState(false);
@@ -58,10 +57,15 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen p-4 sm:p-8 pb-20 font-[family-name:var(--font-comic-sans)] bg-gradient-to-br from-puke-green via-neon-pink to-radioactive-yellow overflow-hidden">
+    <div className="min-h-screen p-4 sm:p-8 pb-20 font-[family-name:var(--font-comic-sans)] bg-gradient-to-br from-purple-600 via-purple-500 to-purple-400 overflow-hidden">
       <header className="text-center mb-8 sm:mb-12 relative">
         <h1 className="text-4xl sm:text-6xl font-bold mb-2 sm:mb-4 text-white drop-shadow-lg animate-bounce">WTFathon</h1>
-        <p className=" sm:text-xl text-white animate-spin">The hackathon that made you question reality</p>
+        <p className="sm:text-xl text-white animate-spin">The hackathon that made you question reality</p>
+        <nav className="mt-4">
+          <Link href="/projects" className="text-white hover:text-yellow-300 transition-colors">
+            View Projects
+          </Link>
+        </nav>
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
           {[...Array(6)].map((_, i) => (
             <div key={`float-emoji-${i}`} className="absolute text-4xl sm:text-6xl animate-float" style={{
@@ -75,10 +79,10 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="flex min-h-screen flex-col items-center justify-between p-24 transition-all duration-500">
-        <section className="bg-white/80 rounded-lg p-4 sm:p-6 mb-8 sm:mb-12 transform skew-y-3 hover:skew-y-0 transition-transform">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 text-purple-600">What in the name of Cthulhu happened here?</h2>
-          <p className="text-sm sm:text-base text-green-500">On a day when the planets aligned and common sense took a vacation, a bunch of sleep-deprived nerds in Ahmedabad decided to create digital abominations. Behold the results of their caffeine-fueled madness!</p>
+      <main className="flex min-h-screen flex-col items-center justify-between p-4 sm:p-24 transition-all duration-500">
+        <section className="bg-white/90 sm:bg-white/90 rounded-2xl p-6 mb-8 sm:mb-12 transform hover:scale-105 transition-transform shadow-lg w-full max-w-md sm:max-w-none">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-purple-600 text-center">What in the name of Cthulhu happened here?</h2>
+          <p className="text-sm sm:text-base text-green-600 text-center">On a day when the planets aligned and common sense took a vacation, a bunch of sleep-deprived nerds in Ahmedabad decided to create digital abominations. Behold the results of their caffeine-fueled madness!</p>
         </section>
 
         {/* Past Event Showcase Section */}
@@ -119,11 +123,11 @@ export default function Home() {
           </button>
         </div>
 
-        <div className="mt-8 sm:mt-12 bg-white/80 p-4 sm:p-6 rounded-lg transform -rotate-1 hover:rotate-1 transition-transform">
-          <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 text-red-500">Random WTF Generator</h3>
-          <p className="text-sm sm:text-base text-blue-600 mb-4">Need inspiration for your next absurd project? We've got you covered!</p>
+        <div className="mt-8 sm:mt-12 bg-white/90 sm:bg-white/90 p-6 rounded-2xl transform hover:scale-105 transition-transform shadow-lg w-full max-w-md sm:max-w-none">
+          <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-red-500 text-center">Random WTF Generator</h3>
+          <p className="text-sm sm:text-base text-blue-600 mb-4 text-center">Need inspiration for your next absurd project? We've got you covered!</p>
           <div
-            className={`bg-gray-200 p-4 rounded-lg text-center relative cursor-pointer hover:bg-gray-300 transition-colors ${isGenerating ? 'animate-pulse' : ''}`}
+            className={`bg-gray-200 p-6 rounded-xl text-center relative cursor-pointer hover:bg-gray-300 transition-colors ${isGenerating ? 'animate-pulse' : ''}`}
             onClick={handleGenerateIdea}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -135,13 +139,17 @@ export default function Home() {
             aria-label="Generate new random idea"
           >
             {isGenerating ? (
-              <p className="text-lg sm:text-xl font-bold text-purple-700">Generating madness...</p>
+              <p className="text-xl sm:text-2xl font-bold text-purple-700">Generating madness...</p>
             ) : (
-              <p className="text-lg sm:text-xl font-bold text-purple-700">{randomIdea}</p>
+              <p className="text-xl sm:text-2xl font-bold text-purple-700">{randomIdea}</p>
             )}
-            <div className={`absolute top-2 right-2 ${isGenerating ? 'animate-spin' : ''}`}>🌀</div>
+            <div className={`absolute top-2 right-2 text-2xl ${isGenerating ? 'animate-spin' : ''}`}>🌀</div>
           </div>
-          <p className="text-xs sm:text-sm text-center mt-2 text-gray-600">Click to generate a new idea!</p>
+          <p className="text-sm text-center mt-4 text-gray-600">
+            <span className="sm:hidden">Tap</span>
+            <span className="hidden sm:inline">Click</span>
+            {" "}to generate a new idea!
+          </p>
         </div>
       </main>
 
