@@ -78,6 +78,6 @@ export const projects = [
   }
 ]; 
 
-export const group_photo = ["https://cloud-gejxl81w3-hack-club-bot.vercel.app/0whatsapp_image_2024-09-02_at_11.24.59.jpeg","https://cloud-gejxl81w3-hack-club-bot.vercel.app/1whatsapp_image_2024-09-02_at_11.25.00.jpeg","https://cloud-923vc3tyf-hack-club-bot.vercel.app/2whatsapp_image_2024-09-01_at_17.50.55.jpeg"]
+export const group_photo = ["https://cloud-gejxl81w3-hack-club-bot.vercel.app/0whatsapp_image_2024-09-02_at_11.24.59.jpeg","https://cloud-gejxl81w3-hack-club-bot.vercel.app/1whatsapp_image_2024-09-02_at_11.25.00.jpeg"]
 
 export const poster = "https://cloud-923vc3tyf-hack-club-bot.vercel.app/3whatsapp_image_2024-09-01_at_18.33.20.jpeg"

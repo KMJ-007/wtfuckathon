@@ -2,10 +2,45 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from 'next/link';
-import { poster } from "./constant"; // Import the poster from constants
+import { poster } from "./constant";
 
 export default function Home() {
   const [isBananaCursor, setIsBananaCursor] = useState(false);
+  const [randomIdea, setRandomIdea] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const generateRandomIdea = () => {
+    const adjectives = [
+      'quantum', 'AI-powered', 'blockchain', 'VR', 'time-traveling', 'interdimensional',
+      'self-aware', 'telepathic', 'shape-shifting', 'quantum-entangled', 'meme-generating',
+      'sentient', 'holographic', 'nano-tech', 'psychic', 'gravity-defying'
+    ];
+    const objects = [
+      'toaster', 'banana peeler', 'sock sorter', 'toilet paper dispenser', 'unicorn groomer', 'meme generator',
+      'rubber duck', 'coffee mug', 'doorknob', 'keyboard', 'plant pot', 'umbrella',
+      'fidget spinner', 'lava lamp', 'disco ball', 'snow globe', 'paperclip', 'stapler'
+    ];
+    const actions = [
+      'predicts the stock market', 'talks to ghosts', 'brews coffee', 'writes poetry', 'solves world hunger', 'turns water into wine',
+      'translates cat meows', 'composes dubstep music', 'folds laundry perfectly', 'tells dad jokes',
+      'predicts meme trends', 'generates clickbait headlines', 'creates conspiracy theories',
+      'interprets dreams', 'summons pizza', 'repels mosquitoes with puns'
+    ];
+
+    const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+    const randomObject = objects[Math.floor(Math.random() * objects.length)];
+    const randomAction = actions[Math.floor(Math.random() * actions.length)];
+
+    return `A ${randomAdjective} ${randomObject} that ${randomAction}`;
+  };
+
+  const handleGenerateIdea = () => {
+    setIsGenerating(true);
+    setTimeout(() => {
+      setRandomIdea(generateRandomIdea());
+      setIsGenerating(false);
+    }, 1500); // Adjust this delay as needed
+  };
 
   useEffect(() => {
     if (isBananaCursor) {
@@ -17,6 +52,10 @@ export default function Home() {
       return () => clearTimeout(timer);
     }
   }, [isBananaCursor]);
+
+  useEffect(() => {
+    setRandomIdea(generateRandomIdea());
+  }, []);
 
   return (
     <div className="min-h-screen p-8 pb-20 font-[family-name:var(--font-comic-sans)] bg-gradient-to-br from-puke-green via-neon-pink to-radioactive-yellow overflow-hidden">
@@ -46,24 +85,24 @@ export default function Home() {
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4 text-center text-white">Past Madness</h2>
           <div className="bg-white/80 rounded-lg p-4 transform hover:scale-105 transition-transform shadow-lg">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <Image
-                  src={'/poster.jpeg'}
-                  alt="WTFathon Poster"
-                  width={50}
-                  height={75}
-                  className="rounded-lg shadow-md mr-4"
-                />
-                <div>
-                  <h3 className="text-xl font-bold text-purple-600">WTFathon 2023</h3>
-                  <p className="text-green-500 text-sm">🗓️ 01/09/2023</p>
+            <Link href="/projects">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <Image
+                    src={'/poster.jpeg'}
+                    alt="WTFathon Poster"
+                    width={50}
+                    height={75}
+                    className="rounded-lg shadow-md mr-4"
+                  />
+                  <div>
+                    <h3 className="text-xl font-bold text-purple-600">WTFathon 2023</h3>
+                    <p className="text-green-500 text-sm">🗓️ 01/09/2023</p>
+                  </div>
                 </div>
+
               </div>
-              <Link href="/projects" className="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold hover:bg-yellow-300 transform hover:scale-110 transition-transform inline-block">
-                View Projects
-              </Link>
-            </div>
+            </Link>
           </div>
         </section>
 
@@ -86,14 +125,26 @@ export default function Home() {
         <div className="mt-12 bg-white/80 p-6 rounded-lg transform -rotate-1 hover:rotate-1 transition-transform">
           <h3 className="text-2xl font-bold mb-4 text-red-500">Random WTF Generator</h3>
           <p className="text-blue-600 mb-4">Need inspiration for your next absurd project? We've got you covered!</p>
-          <div className="bg-gray-200 p-4 rounded-lg text-center relative">
-            <p className="text-xl font-bold text-purple-700">
-              {`A ${['quantum', 'AI-powered', 'blockchain', 'VR', 'time-traveling', 'interdimensional'][Math.floor(Math.random() * 6)]} 
-              ${['toaster', 'banana peeler', 'sock sorter', 'toilet paper dispenser', 'unicorn groomer', 'meme generator'][Math.floor(Math.random() * 6)]} 
-              that ${['predicts the stock market', 'talks to ghosts', 'brews coffee', 'writes poetry', 'solves world hunger', 'turns water into wine'][Math.floor(Math.random() * 6)]}`}
-            </p>
-            <div className="absolute top-2 right-2 animate-spin">🌀</div>
+          <div
+            className={`bg-gray-200 p-4 rounded-lg text-center relative cursor-pointer hover:bg-gray-300 transition-colors ${isGenerating ? 'animate-pulse' : ''}`}
+            onClick={handleGenerateIdea}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                handleGenerateIdea();
+              }
+            }}
+            tabIndex={0}
+            role="button"
+            aria-label="Generate new random idea"
+          >
+            {isGenerating ? (
+              <p className="text-xl font-bold text-purple-700">Generating madness...</p>
+            ) : (
+              <p className="text-xl font-bold text-purple-700">{randomIdea}</p>
+            )}
+            <div className={`absolute top-2 right-2 ${isGenerating ? 'animate-spin' : ''}`}>🌀</div>
           </div>
+          <p className="text-sm text-center mt-2 text-gray-600">Click to generate a new idea!</p>
         </div>
       </main>
 
@@ -102,12 +153,6 @@ export default function Home() {
         <p className="mt-2 text-sm">Disclaimer: This site may cause uncontrollable laughter, temporary insanity, or a sudden urge to create useless inventions. Proceed at your own risk.</p>
         <p className="mt-2 text-xs animate-bounce">Side effects may include spontaneous dance parties and an irrational fear of normal websites.</p>
       </footer>
-
-      <div className="fixed bottom-4 right-4 animate-bounce">
-        <div className="text-6xl animate-spin hover:animate-bounce">
-          🤪
-        </div>
-      </div>
 
       <style jsx global>{`
         @keyframes float {
@@ -121,3 +166,4 @@ export default function Home() {
     </div>
   );
 }
+
