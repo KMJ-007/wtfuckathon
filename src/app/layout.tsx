@@ -6,12 +6,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import EmojiButton from './EmojiButton';
 
-export const geistSans = localFont({
+const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
-export const geistMono = localFont({
+const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
@@ -55,7 +55,7 @@ export default function RootLayout({
         <footer className="mt-8 sm:mt-12 text-center py-4 px-2 rounded-t-lg">
           <p className="text-sm sm:text-base mb-2">Documentation of the fever dreams at <a href="https://lu.ma/tj6odp5b" className="underline hover:text-yellow-300 transition-colors">WTFathon</a></p>
           <p className="text-xs sm:text-sm mb-2">Disclaimer: This site may cause uncontrollable laughter, temporary insanity, or a sudden urge to create useless inventions. Proceed at your own risk.</p>
-          <p className="text-xs animate-bounce mb-2">Side effects may include spontaneous dance parties and an irrational fear of normal websites.</p>
+          <p className="text-xs sm:text-sm mb-2">Side effects may include spontaneous dance parties and an irrational fear of normal websites.</p>
           <p className="text-xs italic">Absolutely, positively this site is NOT created by AI.</p>
         </footer>
       </body>

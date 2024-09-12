@@ -89,13 +89,12 @@ export default function ProjectsPage() {
           >
             {group_photo.map((photo, index) => (
               <SwiperSlide key={photo}>
-                <div className="aspect-w-16 aspect-h-9 relative">
+                <div className="relative w-full pt-[56.25%]">
                   <Image 
                     src={photo} 
                     alt={`Group photo ${index + 1}`} 
-                    layout="fill" 
-                    objectFit="contain" 
-                    className="rounded-lg shadow-lg" 
+                    fill
+                    className="rounded-lg shadow-lg object-contain" 
                   />
                 </div>
               </SwiperSlide>

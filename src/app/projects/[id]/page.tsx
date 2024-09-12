@@ -47,7 +47,15 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                 <SwiperSlide key={`video-${index}`}>
                   <div className="relative w-full h-0 pb-[56.25%]">
                     <video
-                      ref={el => videoRefs.current[index] = el}
+                      ref={(el) => {
+                        if (el) {
+                          el.style.width = '100%';
+                          el.style.height = '100%';
+                          el.style.position = 'absolute';
+                          el.style.top = '0';
+                          el.style.left = '0';
+                        }
+                      }}
                       src={video}
                       controls
                       autoPlay={index === activeIndex}
